@@ -1,13 +1,14 @@
 
-import React from 'react';
-import { useCMSData } from './store';
+import React, { useState } from 'react';
+import { INITIAL_DATA as data } from './constants';
 import { Phone, MapPin, Clock, Star, ShieldCheck, BookOpen, Languages, Sparkles } from './components/Icons';
 
-// Helper for smooth scrolling
+const LOGO_URL = "https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-1/487306608_122224605398214302_5911723855961414638_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=111fe6&_nc_ohc=1wlgSm6CFCkQ7kNvwFKVLil&_nc_oc=AdnrQD7xGvpGvOEXKisoz6OeaF-9heYb-NJBjeCkWRQFwCCYwrqqgJgLnjTd14tWJQiqDNIDuaY62BxtQVaXx2En&_nc_zt=24&_nc_ht=scontent-ord5-1.xx&_nc_gid=W-f9KvoShisBuAS6BAURTw&oh=00_AfsPfyB2zUdDaKLnKZHox8EMsgynMtMcBaqVAUvu6_IO2Q&oe=698884D2";
+
 const scrollToSection = (id: string) => {
   const element = document.getElementById(id);
   if (element) {
-    const offset = 80; // Navbar height
+    const offset = 80;
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = element.getBoundingClientRect().top;
     const elementPosition = elementRect - bodyRect;
@@ -19,8 +20,6 @@ const scrollToSection = (id: string) => {
     });
   }
 };
-
-const LOGO_URL = "https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-1/487306608_122224605398214302_5911723855961414638_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=111fe6&_nc_ohc=1wlgSm6CFCkQ7kNvwFKVLil&_nc_oc=AdnrQD7xGvpGvOEXKisoz6OeaF-9heYb-NJBjeCkWRQFwCCYwrqqgJgLnjTd14tWJQiqDNIDuaY62BxtQVaXx2En&_nc_zt=24&_nc_ht=scontent-ord5-1.xx&_nc_gid=W-f9KvoShisBuAS6BAURTw&oh=00_AfsPfyB2zUdDaKLnKZHox8EMsgynMtMcBaqVAUvu6_IO2Q&oe=698884D2";
 
 const Navbar: React.FC = () => (
   <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-orange-100">
@@ -62,7 +61,7 @@ const Navbar: React.FC = () => (
   </nav>
 );
 
-const Footer: React.FC<{ settings: any }> = ({ settings }) => (
+const Footer: React.FC = () => (
   <footer className="bg-stone-950 text-stone-400 py-16 px-6">
     <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
       <div className="space-y-4">
@@ -95,9 +94,7 @@ const Footer: React.FC<{ settings: any }> = ({ settings }) => (
 );
 
 export default function App() {
-  const { data } = useCMSData();
-
-  const [formStatus, setFormStatus] = React.useState<'idle' | 'sending' | 'sent'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,7 +106,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col selection:bg-amber-100">
       <Navbar />
 
-      <main className="flex-grow scroll-smooth">
+      <main className="flex-grow">
         {/* Hero Section */}
         <section id="hero" className="relative h-[85vh] overflow-hidden">
           <img 
@@ -124,7 +121,7 @@ export default function App() {
                 <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
                 Licensed Home Daycare
               </div>
-              <h1 className="text-5xl md:text-7xl font-display font-extrabold text-stone-900 leading-[1] tracking-tight">
+              <h1 className="text-5xl md:text-7xl font-display font-extrabold text-stone-900 leading-[1.1] tracking-tight">
                 {data.bio.heroHeadline}
               </h1>
               <p className="text-lg md:text-xl text-stone-600 max-w-lg leading-relaxed font-medium">
@@ -426,7 +423,7 @@ export default function App() {
         </section>
       </main>
 
-      <Footer settings={data.settings} />
+      <Footer />
     </div>
   );
 }
