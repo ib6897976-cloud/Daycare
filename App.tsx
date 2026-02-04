@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { INITIAL_DATA as data } from './constants';
 import { Phone, MapPin, Clock, Star, ShieldCheck, BookOpen, Languages, Sparkles } from './components/Icons';
@@ -107,7 +106,6 @@ export default function App() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* Hero Section */}
         <section id="hero" className="relative h-[85vh] overflow-hidden">
           <img 
             src={data.images.hero} 
@@ -145,7 +143,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Our Vision */}
         <section className="py-24 px-6 bg-stone-50 border-y border-stone-100">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <div className="inline-block px-4 py-1.5 bg-amber-100/50 text-amber-700 rounded-full font-bold text-xs uppercase tracking-widest">
@@ -164,7 +161,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* About Us Section */}
         <section id="about" className="py-32 px-6 bg-white overflow-hidden scroll-mt-20">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-20">
@@ -197,7 +193,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Our Programs Section */}
         <section id="programs" className="py-32 px-6 bg-[#fffcf9] scroll-mt-20">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 space-y-4">
@@ -224,7 +219,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Pricing Section */}
         <section id="pricing" className="py-32 px-6 bg-white scroll-mt-20">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-20 space-y-6">
@@ -268,7 +262,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Reviews Section */}
         <section id="reviews" className="py-32 px-6 bg-stone-50 border-t border-stone-100 scroll-mt-20">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-20 space-y-6">
@@ -305,7 +298,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Contact Us Section */}
         <section id="contact" className="py-32 px-6 bg-white scroll-mt-20">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-20">
